@@ -1,0 +1,20 @@
+page-login {
+    .login {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        .list-login {
+            height: 500px;
+            position: absolute;
+            width: 100%;
+            top: 25vh;
+            bottom: 5vh;
+            padding: 15px;
+            .notif {
+                background-color: #c34f4f;
+                color: #fff;
+                padding: 15px;
+            }
+        }
+    }
+}

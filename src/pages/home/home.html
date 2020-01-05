@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Beranda</ion-title>
+
+    <ion-buttons end>
+      <button ion-button tappable (click)="presentOrder()" class="big-icon">
+          <ion-icon name="basket">
+            <ion-badge id="notifications-badge" color="danger">{{ count_bucket }}</ion-badge>
+          </ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+  <ion-segment [(ngModel)]="category"  scrollable>
+    <ion-segment-button value="all" (click)="getData()">
+      Semua
+    </ion-segment-button>
+    <ion-segment-button [value]="item.idkategori" *ngFor="let item of categorys" (click)="filter_category(item.idkategori)">
+      {{ item.nm_kategori }}
+    </ion-segment-button>
+  </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="category">
+    <!-- <ion-list *ngSwitchCase="{{ category }}"> -->
+      <ion-item *ngFor="let item of items; let i = index">
+        <ion-avatar item-start>
+          <img src="{{ item.images }}">
+        </ion-avatar>
+        <h2>{{ item.nm_produk }}</h2>
+        <p>{{ item.harga_produk | currency:"Rp. ":true:'1.0' }}</p>
+        <p *ngIf="item.status_stok == 1">Stok: {{ item.stok_produk }}</p>
+        <p *ngIf="item.status_stok == 0">Full Stok</p>        
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                
+                <ion-item inset>
+                  <ion-input type="number" min="1" [max]="item.stok_produk" class="bg-gray" [(ngModel)]="count[i]" *ngIf="item.status_stok != 0"></ion-input>
+                  <ion-input type="number" class="bg-gray" [(ngModel)]="count[i]" *ngIf="item.status_stok == 0"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-6>
+                <ion-item inset>
+                  <ion-icon name="add-circle" (click)="incrementQty(i)" item-right></ion-icon>
+                  <ion-icon name="remove-circle" (click)="decrementQty(i)" item-right></ion-icon>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        <div text-right>
+          <button ion-button small (click)="order(i)">Tambah</button>
+        </div>
+      </ion-item>
+    <!-- </ion-list> -->
+  </div>
+</ion-content>

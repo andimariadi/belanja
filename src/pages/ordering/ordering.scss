@@ -1,0 +1,8 @@
+page-ordering {
+    .item-md.item-input.item-input-has-focus .item-inner,
+    .item-md.item-input.input-has-focus .item-inner {
+        border: 0;
+        -webkit-box-shadow: 0;
+        box-shadow: none;
+    }
+}

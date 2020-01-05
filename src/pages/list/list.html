@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List Order</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of selectedItem; let i = index">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{item.images}}">
+      </ion-avatar>
+      <h2>{{item.nm_produk}}</h2>
+      <p>{{item.harga | currency:"Rp. ": true:'1.0' }}</p>
+      <div class="item-note" item-end>
+        x {{ item.jumlah }}
+      </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(i, item.idtransaksi)">Hapus</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8>
+        <p class="margin-small">Total : {{ total_price  | currency:"Rp. ": true:'1.0' }}</p>
+      </ion-col>
+      <ion-col text-right col-4>
+        <button ion-button small color="danger" full (click)="submit()">Confirm</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
