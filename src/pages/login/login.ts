@@ -19,8 +19,8 @@ import { Storage } from '@ionic/storage';
 export class LoginPage {
 
   success: Boolean = true;
-  username: any;
-  password: any;
+  username: any = '';
+  password: any = '';
   temp: any = [];
   msg: any = '';
   constructor(
@@ -33,10 +33,11 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   async submit() {
+    if(this.username == '') 
+      return false;
     this.success = true;
     const loader = this.loadingCtrl.create({
       content: "Please wait..."

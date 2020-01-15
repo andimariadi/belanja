@@ -1,18 +1,22 @@
-<ion-content class="login">
-  <div class="list-login">
+<ion-header>
+  <ion-navbar class="ligth">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
     <div *ngIf="!success" class="notif" [innerHTML]="msg"></div>
-    <h1>Login</h1>
     <ion-list>
       <ion-item>
         <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="username"></ion-input>
+        <ion-input type="text" [(ngModel)]="username" autofocus="true" disabled="false" ></ion-input>
       </ion-item>
     
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>  
+        <ion-input type="password" [(ngModel)]="password" disabled="false" ></ion-input>
+      </ion-item>
+    
     </ion-list>
     <button ion-button block (click)="submit()">Login</button>
-  </div>
 </ion-content>

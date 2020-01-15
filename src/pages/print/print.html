@@ -1,29 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Print</ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content padding>
 <h3>Warung Pasta</h3>
 <p>Jl. A. Yani no 054, Bogor, Indonesia, 15141</p>
 <p>+621234567890</p>
 <ion-grid>
   <ion-row>
-    <ion-col col-4>26 Des 2019</ion-col>
+    <ion-col col-4>{{ date }}</ion-col>
     <ion-col col-4></ion-col>
-    <ion-col col-4>18:00</ion-col>
+    <ion-col col-4>{{ time }}</ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>Receipt Number</ion-col>
     <ion-col col-4></ion-col>
-    <ion-col col-4>XXXXX</ion-col>
-  </ion-row>
-  
-  <ion-row>
-    <ion-col col-4>Server By</ion-col>
-    <ion-col col-4></ion-col>
-    <ion-col col-4>XXXXX</ion-col>
-  </ion-row>
-  
-  <ion-row>
-    <ion-col col-4>Collected By</ion-col>
-    <ion-col col-4></ion-col>
-    <ion-col col-4>XXXXX</ion-col>
+    <ion-col col-4>{{ id }}</ion-col>
   </ion-row>
   
   <ion-row>
@@ -32,9 +25,10 @@
 
   
   <ion-row *ngFor="let item of selectedItem; let i = index">
-    <ion-col col-4>{{ item.title }}</ion-col>
-    <ion-col col-4>x {{ item.count }}</ion-col>
-    <ion-col col-4>{{ item.count*item.price | currency:"Rp. ": true: '1.0' }}</ion-col>
+    <ion-col col-3>{{ item.nm_produk }}</ion-col>
+    <ion-col col-3>x {{ item.jumlahs }}</ion-col>
+    <ion-col col-3>{{ item.hargas | currency:"Rp. ": true: '1.0' }}</ion-col>
+    <ion-col col-3>{{ item.totals | currency:"Rp. ": true: '1.0' }}</ion-col>
   </ion-row>
 
   <ion-row>

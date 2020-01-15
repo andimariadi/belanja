@@ -18,7 +18,7 @@
     <button ion-item *ngFor="let item of items['data']" (click)="itemSelected(item.idpenjualan, item.status_bayarpj)">
       {{ item.kd_penjualan }}
       <p>{{ item.status_bayar_penjualan }}</p>
-      <ion-note item-end>{{ item.grandtotal | currency: "Rp. ":'1.0'}}</ion-note>
+      <ion-note item-end>{{ item.grandtotal | currency:"Rp. ": true:'1.0'}}</ion-note>
     </button>  
   </ion-list>
 </ion-content>

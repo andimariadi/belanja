@@ -18,17 +18,13 @@ import { ReportPage } from '../pages/report/report';
 import { Printer } from '@ionic-native/printer';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { PrinterPage } from '../pages/printer/printer';
+import { PayPage } from '../pages/pay/pay';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
-    OrderingPage,
-    ListPage,
-    PrintPage,
-    ReportPage,
-    PrinterPage
+    ListPage
   ],
   imports: [
     BrowserModule,
@@ -43,12 +39,13 @@ import { PrinterPage } from '../pages/printer/printer';
   entryComponents: [
     MyApp,
     HomePage,
+    ListPage,
     LoginPage,
     OrderingPage,
-    ListPage,
     PrintPage,
     ReportPage,
-    PrinterPage
+    PrinterPage,
+    PayPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the PrinterPage page.
@@ -21,20 +22,30 @@ export class PrinterPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private bluetoothSerial: BluetoothSerial,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private storage: Storage) {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad PrinterPage');
     this.listBluetooth();
+  }
+  
+  checkBluetooth(){
+    this.bluetoothSerial.isEnabled().then(success=>{
+      this.listBluetooth();
+    },error=>{
+      this.showAlert('Error','Silahkan Nyalakan Bluetooth Terlebih dahulu');
+    });
   }
 
   listBluetooth(){
     this.bluetoothSerial.list().then(
       data =>{
-       this.items = data;
+        console.log(data);
+        this.items = data;
       },error=>{
-       this.showAlert('Error','Silahkan Nyalakan Bluetooth Terlebih dahulu');
+        console.log(error);
+        this.showAlert('Error','Tidak mendapatkan list bluetooth');
       }
     );
   }
@@ -48,11 +59,12 @@ export class PrinterPage {
     alert.present();
   }
 
-  connect(address){
-    this.bluetoothSerial.connect(address).subscribe(success=>{
+  async connect(address){
+    this.bluetoothSerial.connect(address).subscribe(async success=>{
       this.showAlert('Berhasil','Bluetooth Connect dengan ID ' + address);
-    },error=>{ 
-      this.showAlert('Error','Bluetooth tidak terhubung');
+      await this.storage.set('printer_id', address);
+    },error=>{
+      this.showAlert('Error','Tidak dapat menghubungkan.');
     });
   }
 

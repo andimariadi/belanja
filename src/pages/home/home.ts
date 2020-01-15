@@ -17,6 +17,8 @@ export class HomePage {
   bucket: any = [];
   count_bucket: any = 0;
   default: any = 0;
+
+  token: any;
   constructor(
     public navCtrl: NavController,
     private storage: Storage,

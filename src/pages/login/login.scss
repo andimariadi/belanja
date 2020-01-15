@@ -1,20 +1,37 @@
 page-login {
-    .login {
-        width: 100%;
-        position: relative;
-        text-align: center;
-        .list-login {
-            height: 500px;
-            position: absolute;
-            width: 100%;
-            top: 25vh;
-            bottom: 5vh;
-            padding: 15px;
+    // .login {
+    //     width: 100%;
+    //     position: relative;
+    //     text-align: center;
+    //     .list-login {
+    //         height: 300px;
+    //         position: absolute;
+    //         width: 100%;
+    //         top: 25%;
+    //         bottom: 5vh;
+    //         padding: 15px;
             .notif {
                 background-color: #c34f4f;
                 color: #fff;
                 padding: 15px;
             }
-        }
+    //     }
+    // }
+
+    .ligth {
+        background-color: #fff;
+    }
+
+    .header-md::after, .tabs-md[tabsplacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsplacement="bottom"] > .tabbar::before {
+        left: 0px;
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-image: none;
+        content: "";
+        background-color: #FFF;
+        bottom: 0px;
+        background-position: 0px center;
+        background-repeat: repeat-x;
     }
 }

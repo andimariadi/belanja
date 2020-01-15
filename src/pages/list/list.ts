@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import { ReportPage } from '../report/report';
 import { OrderingPage } from '../ordering/ordering';
 
 @Component({
@@ -94,7 +93,7 @@ export class ListPage {
       this.getData();
       this.total_price = 0;
       const toast = this.toastCtrl.create({
-        message: 'Berhasil dibayarkan!',
+        message: 'Berhasil dikonfirmasi, silahkan bayar!',
         duration: 3000
       });
       toast.present();

@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { ReportPage } from '../pages/report/report';
+import { PrinterPage } from '../pages/printer/printer';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +31,8 @@ export class MyApp {
     events.subscribe('user:loggedin',()=>{
       this.pages = [
         { title: 'Home', component: HomePage },
-        { title: 'Invoice', component: ReportPage }
+        { title: 'Invoice', component: ReportPage },
+        { title: 'Setting Printer', component: PrinterPage }
       ];
       this.token = 'logged';
     });
@@ -58,7 +60,8 @@ export class MyApp {
         if(val) {
           this.pages = [
             { title: 'Home', component: HomePage },
-            { title: 'Invoice', component: ReportPage }
+            { title: 'Invoice', component: ReportPage },
+            { title: 'Setting Printer', component: PrinterPage }
           ];
           this.rootPage = HomePage;
         } else {
